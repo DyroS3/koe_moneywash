@@ -213,7 +213,7 @@ AddEventHandler('koe_moneywash:spawnPickupPed',function(amount, xp, level, waitT
         Wait(10)
     end
     local moveTo = vector3(location.x -20, location.y -20, location.z)
-    pedNpc2 = CreatePed(5, hash2, moveTo, heading, false, false)
+    pedNpc2 = CreatePed(5, hash2, moveTo, heading, true, false)
 
     TaskGoToEntity(pedNpc2, PlayerPedId(), waitTime * 2, 2.0, 2.0, 1073741824, 0)
     SetEntityInvincible(pedNpc2, true)

@@ -18,21 +18,21 @@ AddEventHandler('koe_moneywash:getRep', function()
         level = 1 
     elseif xp <= 299 then
         level = 2
-    elseif xp <= 399 then
+    elseif xp <= 1000 then
         level = 3
-    elseif xp <= 499 then
+    elseif xp <= 2000 then
         level = 4
-    elseif xp <= 599 then
+    elseif xp <= 2500 then
         level = 5
-    elseif xp <= 699 then
+    elseif xp <= 3000 then
         level = 6
-    elseif xp <= 799 then
+    elseif xp <= 3500 then
         level = 7
-    elseif xp <= 899 then
+    elseif xp <= 4000 then
         level = 8
-    elseif xp <= 999 then
+    elseif xp <= 4500 then
         level = 9
-    elseif xp >= 1000 then
+    elseif xp >= 5000 then
         level = 10
     end
 
@@ -83,6 +83,9 @@ AddEventHandler('koe_moneywash:washIt', function(amount, xp, level)
     
     xPlayer.removeAccountMoney('black_money', amount)
     xPlayer.addMoney(amount - washCut)
+
+    local identifier =  ESX.GetPlayerFromId(source).identifier
+    exports['lab-BlackMarketV2']:giveReputation(identifier, 10)
 
     TriggerClientEvent('ox_lib:notify', source, {type = 'inform', description = 'Your crime notoriety gave you a Wash Rate of %'..washRate, duration = 8000, position = 'top'})
 end)
