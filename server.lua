@@ -9,7 +9,7 @@ RegisterServerEvent('koe_moneywash:getRep')
 AddEventHandler('koe_moneywash:getRep', function()
     local src = source
     local identifier =  ESX.GetPlayerFromId(source).identifier
-    local xp = exports['lab-BlackMarketV2']:getReputation(identifier)
+    local xp = exports['koe_vendors']:getCrimLevel(identifier)
     local level
 
     if xp <= 99 then
@@ -85,7 +85,7 @@ AddEventHandler('koe_moneywash:washIt', function(amount, xp, level)
     xPlayer.addMoney(amount - washCut)
 
     local identifier =  ESX.GetPlayerFromId(source).identifier
-    exports['lab-BlackMarketV2']:giveReputation(identifier, 10)
+    exports['koe_vendors']:giveCrimLevel(identifier, 200)
 
     TriggerClientEvent('ox_lib:notify', source, {type = 'inform', description = 'Your crime notoriety gave you a Wash Rate of %'..washRate, duration = 8000, position = 'top'})
 end)

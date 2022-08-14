@@ -151,7 +151,7 @@ function inside(self)
     if IsControlJustReleased(0, 38) and inZone == true then
         RemoveBlip(Blip)
         
-        rng = math.random(1,50)
+        rng = math.random(1,2)
 
         if rng == 1 then
             local data = exports['cd_dispatch']:GetPlayerInfo()
