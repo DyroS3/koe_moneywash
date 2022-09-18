@@ -140,7 +140,24 @@ AddEventHandler('koe_moneywash:startWash',function(amount, xp, level)
         level = level,
         onExit = onExit
     })
-    
+    local data = exports['cd_dispatch']:GetPlayerInfo()
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police'}, 
+        coords = sphere.coords,
+        title = 'Suspicious Activity ',
+        message = 'A '..data.sex..' is handing something to someone '..data.street, 
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+        sprite = 480, 
+        scale = 1.2, 
+        colour = 3,
+        flashes = true, 
+        text = 'Suspicious Activity',
+        time = (5*60*1000),
+        sound = 1,
+        }
+    })
     Blip = AddBlipForCoord(location)
     SetBlipRoute(Blip,true)
 end)
@@ -150,29 +167,6 @@ function inside(self)
     lib.showTextUI('[E] - To Wash')
     if IsControlJustReleased(0, 38) and inZone == true then
         RemoveBlip(Blip)
-        
-        rng = math.random(1,2)
-
-        if rng == 1 then
-            local data = exports['cd_dispatch']:GetPlayerInfo()
-            TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police'}, 
-                coords = data.coords,
-                title = 'Suspicious Activity ',
-                message = 'A '..data.sex..' is handing something to someone '..data.street, 
-                flash = 0,
-                unique_id = tostring(math.random(0000000,9999999)),
-                blip = {
-                sprite = 480, 
-                scale = 1.2, 
-                colour = 3,
-                flashes = true, 
-                text = 'Suspicious Activity',
-                time = (5*60*1000),
-                sound = 1,
-                }
-            })
-        end
 
         xp = sphere.xp
         amount = sphere.amount

@@ -22,17 +22,17 @@ AddEventHandler('koe_moneywash:getRep', function()
         level = 3
     elseif xp <= 2000 then
         level = 4
-    elseif xp <= 2500 then
-        level = 5
     elseif xp <= 3000 then
+        level = 5
+    elseif xp <= 6000 then
         level = 6
-    elseif xp <= 3500 then
+    elseif xp <= 8000 then
         level = 7
-    elseif xp <= 4000 then
+    elseif xp <= 10000 then
         level = 8
-    elseif xp <= 4500 then
+    elseif xp <= 12000 then
         level = 9
-    elseif xp >= 5000 then
+    elseif xp >= 15000 then
         level = 10
     end
 
@@ -53,7 +53,8 @@ end)
 
 RegisterServerEvent('koe_moneywash:washIt')
 AddEventHandler('koe_moneywash:washIt', function(amount, xp, level)
-    local xPlayer = ESX.GetPlayerFromId(source)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
 
     if level == 0 then
         washRate = 0.50
@@ -84,8 +85,8 @@ AddEventHandler('koe_moneywash:washIt', function(amount, xp, level)
     xPlayer.removeAccountMoney('black_money', amount)
     xPlayer.addMoney(amount - washCut)
 
-    local identifier =  ESX.GetPlayerFromId(source).identifier
-    exports['koe_vendors']:giveCrimLevel(identifier, 200)
-
-    TriggerClientEvent('ox_lib:notify', source, {type = 'inform', description = 'Your crime notoriety gave you a Wash Rate of %'..washRate, duration = 8000, position = 'top'})
+    local identifier =  ESX.GetPlayerFromId(src).identifier
+    exports['koe_vendors']:giveCrimLevel(identifier, 20)
+    exports['koe_vendors']:giveCivLevel(identifier, -30)
+    TriggerClientEvent('ox_lib:notify', src, {type = 'inform', description = 'Your crime notoriety gave you a Wash Rate of %'..washRate, duration = 8000, position = 'top'})
 end)
