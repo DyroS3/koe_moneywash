@@ -70,25 +70,19 @@ AddEventHandler('koe_moneywash:spawnPed',function(coords,heading)
         Wait(10)
     end
 
-    pedNpc = CreatePed(5, hash, coords, heading, false, false)
+   pedNpc = CreatePed(5, hash, coords, heading, false, false)
     FreezeEntityPosition(pedNpc, true)
     SetEntityInvincible(pedNpc, true)
     SetBlockingOfNonTemporaryEvents(pedNpc, true)
     SetModelAsNoLongerNeeded(hash)
-    exports['qtarget']:AddEntityZone('pedNpc', pedNpc, {
-            name    = "pedNpc",
-            debugPoly   = false,
-            useZ = true
-                }, {
-                options = {
-                    {
-                    event = "koe_moneywash:checkRep",
-                    icon = "fa-solid fa-money-bill",
-                    label = "Talk to Frank",
-                    }                               
-                },
-                    distance = 2.5
-                })
+    exports.ox_target:addLocalEntity(pedNpc, {
+            {
+            name = "pedNpc",
+            event = "koe_moneywash:checkRep",
+            icon = "fa-solid fa-money-bill",
+            label = "Talk to Frank",
+            }
+        })
 end)
 
 RegisterNetEvent('koe_moneywash:checkRep')
