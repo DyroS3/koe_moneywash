@@ -1,10 +1,6 @@
 # Koe_Moneywash:
 Moneywash script that uses a database system for checking the players crim level and setting a wash rate based on the amount. 
 
-# Join the Discord!
-
-[![Koe Scripts Discord](https://media.discordapp.net/attachments/973750342263144558/1003740741178249318/invite.png?width=810&height=216)](https://discord.gg/5JuxDnNm94)
-
 # Features:
 * Wash rate is based on crim level in the database.
 * User goes to each point after entering the amount.
