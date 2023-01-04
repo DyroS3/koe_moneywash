@@ -6,7 +6,7 @@ Moneywash script that uses a database system for checking the players crim level
 * User goes to each point after entering the amount.
 
 # Dependencies:
-* [qTarget](https://github.com/overextended/qtarget)
+* [ox_target](https://github.com/overextended/ox_target)
 * [ox_lib](https://github.com/overextended/ox_lib)
 * [ox_inventory](https://github.com/overextended/ox_inventory)
 
